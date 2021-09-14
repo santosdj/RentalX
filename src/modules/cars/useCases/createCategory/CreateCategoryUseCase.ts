@@ -1,7 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
+import { AppError } from "@shared/errors/AppError";
+
 // o serviço não precisa conhecer o request da rota
 // somente o name e description, por isto criamos a interface
 interface IRequest {
@@ -19,9 +20,7 @@ class CreateCategoryUseCase {
   constructor(
     @inject("CategoriesRepository")
     private categoriesRepository: ICategoriesRepository
-  ) {
-    console.log("bla");
-  }
+  ) {}
 
   async execute({ name, description }: IRequest): Promise<void> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(
@@ -32,7 +31,6 @@ class CreateCategoryUseCase {
       // pois o serviço não conhece a rota.
       throw new AppError("Category Already exists!");
     }
-    console.log("use case->chamando repository");
     this.categoriesRepository.create({ name, description });
   }
 }

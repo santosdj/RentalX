@@ -1,4 +1,4 @@
-import { Category } from "../entities/Category";
+import { Category } from "../infra/typeorm/entities/Category";
 // criando um objeto DTO para isolar a rota do repositório
 interface ICreateCategoryDTO {
   name: string;
