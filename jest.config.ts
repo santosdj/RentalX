@@ -1,5 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { pathsToModuleNameMapper } from "ts-jest/utils";
+/*
+ * For a detailed explanation regarding each configuration property and type check, visit:
+ * https://jestjs.io/docs/configuration
+ */
+import { pathsToModuleNameMapper } from "ts-jest";
 
 import { compilerOptions } from "./tsconfig.json";
 
@@ -13,7 +16,7 @@ export default {
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/tmp/jest_rs",
 
-  // Automatically clear mock calls and instances between every test
+  // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
@@ -50,6 +53,11 @@ export default {
   // Make calling deprecated APIs throw helpful error messages
   // errorOnDeprecated: false,
 
+  // The default configuration for fake timers
+  // fakeTimers: {
+  //   "enableGlobally": false
+  // },
+
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
 
@@ -73,14 +81,15 @@ export default {
   // An array of file extensions your modules use
   // moduleFileExtensions: [
   //   "js",
+  //   "mjs",
+  //   "cjs",
   //   "jsx",
   //   "ts",
   //   "tsx",
   //   "json",
   //   "node"
   // ],
-  //
-  //
+
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/src/",
@@ -104,7 +113,7 @@ export default {
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
-  // Automatically reset mock state between every test
+  // Automatically reset mock state before every test
   // resetMocks: false,
 
   // Reset the module registry before running each individual test
@@ -113,7 +122,7 @@ export default {
   // A path to a custom resolver
   // resolver: undefined,
 
-  // Automatically restore mock state between every test
+  // Automatically restore mock state and implementation before every test
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
@@ -164,12 +173,6 @@ export default {
 
   // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
-
-  // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  // testURL: "http://localhost",
-
-  // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
-  // timers: "real",
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
